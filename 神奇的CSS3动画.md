@@ -1,9 +1,9 @@
-#神奇的CSS3动画
+# 神奇的CSS3动画
 在写微信上的活动页面时，因为只需要适配微信内置的浏览器，所以可以很自由的使用各种HTML5、CSS3的新特性，
 要是微信支持的就行。在这期间我最喜欢的就是CSS3的animation，与用js写的动画相比，animation更加简单直观，
 而且也不失灵活。
 
-##animation and @keyframes
+## animation and @keyframes
 animation要与@keyframes搭配使用。在animation中我们引用@keyframes动画的名称，并规定动画的速度，循环等
 属性，在@keyframes中，我们为一个动画命名，并定义它每个关键帧的状态。来看下面的例子：
 
@@ -88,14 +88,14 @@ div {
 
 [更详细实例请访问w3shool](http://www.w3school.com.cn/css3/css3_2dtransform.asp)
 
-###3D transform
+### 3D transform
 3D 转换这里只介绍两个方法，`rotateX()` `rotateY()` 围绕X轴Y轴旋转给定的角度。
 
 与2D转换中的rotate不同的是，2D的rotate在平面中旋转，3D的rotate在空间中旋转。
 
 [w3shool里有一个很直观的比较](http://www.w3school.com.cn/css3/css3_3dtransform.asp)
 
-###组合
+### 组合
 如果我们把这些属性组合在一起，将会组成各种好玩的动画。以下是两个简单的示例，希望能给大家一点启发。
 
 这是一个移动端摇一摇礼盒落下的例子，在PC端看起来可能会有点夸张，建议用控制台调到移动端观看。
