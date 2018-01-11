@@ -160,6 +160,70 @@ user.destroy()
 })()
 ```
 
+## 关联表
+
+Sequelize 提供了一对一，一对多，多对多等关联表操作，我用的不多，这里只介绍 `hasMany()` 这一种，其他的可以看[文档](http://docs.sequelizejs.com/manual/tutorial/associations.html)。
+
+### 设置
+首先要在 model 中设置
+
+```javascript
+const School = sequelize.define('school', {
+  id: {
+    type: Sequelize.INTEGER(11),
+    primaryKey: true,
+    autoIncrement: true,
+  },
+  username: Sequelize.STRING(100),
+})
+
+const Student = sequelize.define('student', {
+    id: {
+    type: Sequelize.INTEGER(11),
+    primaryKey: true,
+    autoIncrement: true,
+  },
+  username: Sequelize.STRING(100),
+})
+
+School.hasMany(Student, {as: 'student', foreignKey: 'schoolId'})
+```
+
+as 参数重新定义了目标model的名字。foreignKey 参数定义了在 t_student 表中关联 key 的名字。
+
+### 关联查
+
+如果我们想查找一个学校和这个学校中所有的学生信息，可以这样找：
+
+```javascript
+(async () => {
+  const group = await School.findById(id, {
+    include: [{
+      model: Student,
+      as: 'student',
+    }],
+  })
+})()
+```
+
+如果我们设置了 as 就需要在 include 选项中设置同样的 as。
+
+按条件查找
+
+```javascript
+(async () => {
+  const group = await School.findAll({
+    where: {
+      name: 'someting',
+    },
+    include: [{
+      model: Student,
+      as: 'student',
+    }],
+  })
+})()
+```
+
 ## 文档
 
 更多详细操作请参考[官方文档](http://docs.sequelizejs.com/)
